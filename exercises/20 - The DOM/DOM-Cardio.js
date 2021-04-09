@@ -37,8 +37,11 @@ image.alt = 'Cute Puppy';
 // Append that image to the wrapper
 div.appendChild(image);
 // with HTML string, make a div, with two paragraphs inside of it
-// string div2 = '<div> <p></p> <p></p> </div>';
+ let div2 = '<div> <p></p> <p></p> </div>';
+ let div3 = div2.innerHTML;
+// document.body.innerHTML = '<div> <p> </p> <p> </p> </div>';
 // put this div before the unordered list from above
+list.insertAdjacentElement('afterEnd', div3);
 // div.insertBefore(div2, list);
 // add a class to the second paragraph called warning
 // remove the first paragraph

@@ -1,3 +1,4 @@
+
 console.log('it works!');
 
 const myParagraph = document.createElement('p');
@@ -32,25 +33,30 @@ myDiv.insertAdjacentElement('beforebegin', heading);
 // <li>five</li>
 // </ul>
 
-const list = document.createElement('ul');
-const li = document.createElement('li');
-li.textContent = 'three';
-list.appendChild(li);
+const myUl = document.createElement('ul');
+const firstLi = document.createElement('li');
+firstLi.textContent= 'One';
+const secondLi =document.createElement('li');
+secondLi.textContent = 'Two';
+const thirdLi =document.createElement('li');
+thirdLi.textContent = 'Three';
+const fourthLi =document.createElement('li');
+fourthLi.textContent = 'Four';
+const fifthLi =document.createElement('li');
+fifthLi.textContent = 'Five';
 
-document.body.insertAdjacentElement('afterbegin', list);
 
-const li5 = document.createElement('li');
-li5.textContent = 'Five';
-list.append(li5);
+myUl.insertAdjacentElement('afterbegin',thirdLi);
+myUl.insertAdjacentElement('afterbegin',secondLi);
+myUl.insertAdjacentElement('afterbegin',firstLi);
+myUl.insertAdjacentElement('beforeend',fourthLi);
+myUl.insertAdjacentElement('beforeend',fifthLi);
 
-const li1 = li5.cloneNode(true);
-li1.textContent = 'one';
-list.insertAdjacentElement('afterbegin', li1);
+document.body.insertAdjacentElement('afterbegin',myUl);
 
-const li4 = document.createElement('li');
-li4.textContent = 'four';
-li5.insertAdjacentElement('beforebegin', li4);
+console.log(myUl);
 
-const li2 = document.createElement('li');
-li2.textContent = 'two';
-li1.insertAdjacentElement('afterend', li2);
+const item = document.querySelector('.item');
+
+
+item.innerHTML = `<div><h1> How are Ya!</h1></div>`;
