@@ -19,7 +19,8 @@ ctx.lineJoin = 'round';
 ctx.lineCap = 'round';
 ctx.lineWidth = 10;
 
-ctx.beginPath(); // start drawing
+// start drawing
+ctx.beginPath(); 
 ctx.moveTo(x, y);
 ctx.lineTo(x, y);
 ctx.stroke();
@@ -49,6 +50,8 @@ function drawingCanvas(e) {
   } else if (e.key === 'ArrowDown') {
     ctx.lineTo(x,y+10);
     y=y+10;
+  } else {
+    window.alert("please use arrow keys");
   };
   ctx.stroke();
 }
@@ -56,5 +59,11 @@ function drawingCanvas(e) {
 window.addEventListener('keydown', drawingCanvas);
 
 // clearing the canvas
-function clearCanvas() {ctx.clearRect(0, 0, width, height)};
+function clearCanvas() {
+  ctx.clearRect(0, 0, width, height);
+  canvas.classList.add('animation');
+  canvas.addEventListener('animationend', () => {
+    canvas.classList.remove('animation');
+  })
+  };
 shakebutton.addEventListener('click', clearCanvas);
