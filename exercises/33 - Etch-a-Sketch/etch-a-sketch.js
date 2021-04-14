@@ -14,12 +14,19 @@ console.log(width, height);
 // create random x and y starting point
 let x = Math.floor(Math.random() * width);
 let y = Math.floor(Math.random() * height);
+let moveAmount = 10;
 
 ctx.lineJoin = 'round';
 ctx.lineCap = 'round';
-ctx.lineWidth = 10;
+ctx.lineWidth = moveAmount;
+
+
+//changing colors
+let hue = 0;
+
 
 // start drawing
+ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
 ctx.beginPath(); 
 ctx.moveTo(x, y);
 ctx.lineTo(x, y);
@@ -38,21 +45,22 @@ function handleKey(e) {
 window.addEventListener('keydown', handleKey);
 
 function drawingCanvas(e) {
+  ctx.beginPath(); 
+  ctx.moveTo(x,y);
   if (e.key === 'ArrowRight') {
-    ctx.lineTo(x+10,y);
-    x=x+10;
+    x+=moveAmount; 
   } else if (e.key === 'ArrowLeft') {
-    ctx.lineTo(x-10,y);
-    x=x-10;
+    x-=moveAmount;
   } else if (e.key === 'ArrowUp') {
-    ctx.lineTo(x,y-10);
-    y=y-10;
+    y-=moveAmount; 
   } else if (e.key === 'ArrowDown') {
-    ctx.lineTo(x,y+10);
-    y=y+10;
+    y+=moveAmount; 
   } else {
     window.alert("please use arrow keys");
   };
+  hue+=moveAmount;
+  ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+  ctx.lineTo(x,y);
   ctx.stroke();
 }
 
@@ -64,6 +72,6 @@ function clearCanvas() {
   canvas.classList.add('animation');
   canvas.addEventListener('animationend', () => {
     canvas.classList.remove('animation');
-  })
+  }, {once: true}); 
   };
 shakebutton.addEventListener('click', clearCanvas);

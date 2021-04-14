@@ -1,18 +1,21 @@
+const button = document.querySelector('button');
 const terms = document.querySelector('.terms-and-conditions');
-const button = document.querySelector('.accept');
 
-
-function obCallback(payload) {
-    if (payload[0].intersectionRatio === 1) {
-        button.disabled = false;
-        console.log('removing disabled');
+function finsihedScrolling(e) {
+    if(e.target.scrollTop === (terms.scrollHeight-terms.clientHeight)) {
+        console.log('scroll is done');
+        button.removeAttribute('disabled');
     } else {
-        button.disabled = true;
-    }
-}
-const ob = new IntersectionObserver(obCallback, {
-    root: terms,
-    threshold: 1,
-});
+        button.setAttribute('disabled', '');
+    };
+};
+terms.addEventListener('scroll', finsihedScrolling);
 
-ob.observe(terms.lastElementChild);
+function termsAccept() {
+    console.log('i agree');
+    window.alert('thanks for submitting');
+}
+
+button.addEventListener('click', termsAccept);
+
+
