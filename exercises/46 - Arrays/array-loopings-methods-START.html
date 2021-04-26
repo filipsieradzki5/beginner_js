@@ -128,9 +128,81 @@
     /*
       Looping Methods
     */
-      console.log(toppings);
-      console.log(toppings.length);
-      console.log(toppings[10]);
+      //log the topping
+      // log the prev topping
+      // log the next topping
+      // if its the last say goodbye
+      function logTopping(el,index, array) {
+        const prevOne = array[index-1] || '1st';
+        const nextOne = array[index+1] || 'Im the last one';
+        
+         console.log(prevOne);
+         console.log(el);
+         console.log(nextOne);
+         console.log("-----");
+        };  
+  
+      toppings.forEach(logTopping);
+      
+      /*
+        Mapping
+      */
+        
+        const taxRate = 23;
+
+         const orderWithTax = orderTotals.map(total => (total+total*taxRate/100).toFixed(2));
+        console.log(orderWithTax);
+
+        console.clear();
+
+        const cleanPeople = people.map(function(person) {
+          // const birthYear = person.birthday.split(',')[1];
+          const currentYear = Date.now();
+          const birthYear = new Date(person.birthday).getTime();
+          const firstName = person.names.first;
+          const lastName = person.names.last;
+          const fullYear = 31536000000;
+          const age = Math.floor((currentYear - birthYear)/ fullYear);
+          return {
+            age,
+            name: `${firstName} ${lastName}`
+          }
+        });
+        
+        console.table(cleanPeople);
+
+        const over40 = cleanPeople.filter(buddy => buddy.age > 40);
+        console.table(over40);
+
+      function studentFinder(x,y) {
+        const seachedStudent = students.find(e => e[y] === x);
+        return console.log(seachedStudent);
+      }
+
+      
+        console.log(students);
+        studentFinder('565a', 'id');
+        studentFinder('Brett', 'first_name');
+
+        function tallyNumbers(tally, currentTotal) {
+         console.log(tally);
+         console.log(currentTotal);
+         console.log('-----')
+         return currentTotal + tally
+        }
+
+        const receipt = orderTotals.reduce(tallyNumbers, 0);
+        console.log(receipt);
+
+        console.clear();
+
+        const reduceLesson = [0, 1, 2, 3, 4].
+        reduce(function(previousValue, currentValue, index, array) {
+          console.log(previousValue, currentValue,(previousValue + currentValue) );
+          return previousValue + currentValue
+        });
+        
+        console.table(reduceLesson);
   </script>
 </body>
 

@@ -9,7 +9,7 @@ const SIZE = 10;
 
 async function populateVideo() {
   const stream = await navigator.mediaDevices.getUserMedia({
-    video: { width: 1280, height: 720 },
+    video: { width: 854, height: 480 },
   });
   video.srcObject = stream;
   await video.play();
